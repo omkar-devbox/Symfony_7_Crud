@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block body %}
+    <style>
+        /* Flash message styles */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .alert-success {
+            background-color: #4CAF50;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Action button styles */
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background-color: #FFA500;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-add {
+            background-color: #4CAF50;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .btn-edit:hover {
+            background-color: #e68900;
+        }
+
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+
+        .btn-add:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    {% for success in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ success }}
+        </div>
+    {% endfor %}
+
+    <!-- Add Post button -->
+    <a href="{{ path('Create') }}" class="btn btn-add">Add Post</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Posts</th>
+                <th>Actions</th>  <!-- New Action column -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td>
+                        <!-- Action buttons for each post -->
+                        <a href="{{ path('post_edit', {id: post.id}) }}" class="btn btn-edit">Edit</a>
+                        <a href="{{ path('post_delete', {id: post.id}) }}" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No posts found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
