@@ -23,10 +23,10 @@ This project is a simple **CRUD (Create, Read, Update, Delete)** application bui
 - Symfony CLI (optional but recommended)
 
 ---
--View
+- View
 ![image](https://github.com/user-attachments/assets/f1f7fbc4-0aff-4635-91f8-e2c85758e8d8)
 
--Add
+- Add
 ![image](https://github.com/user-attachments/assets/915bf209-7b63-42ce-bcf7-6de9e71cfa8c)
 
 - Edit
