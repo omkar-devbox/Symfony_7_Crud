@@ -8,3 +8,21 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+
+### Symfony ###
+.env.local
+.env.local.php
+.env.*.local
+
+/config/secrets/*/prod.decrypt.private.php
+/var/
+/vendor/
+/public/bundles/
+
+### Others ###
+*.log
+*.cache
+.DS_Store
+.idea/
+/node_modules/
